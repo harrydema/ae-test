@@ -5,6 +5,7 @@ import {
   View,
 } from 'react-native'
 import styles from '../styles'
+import imageFiltersImage from './images/ImageFilters.png'
 import shareImage from './images/ShareThis.png'
 
 type Props = {
@@ -26,7 +27,7 @@ class DetailsFooter extends React.PureComponent<Props> {
         >
           <Image style={styles.detailViewImage}
             resizeMode='cover'
-            source={switchColors} />
+            source={imageFiltersImage} />
         </TouchableOpacity>
         <TouchableOpacity
           style={{alignSelf: 'flex-end'}}
