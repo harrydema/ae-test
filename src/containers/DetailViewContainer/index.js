@@ -47,7 +47,7 @@ class DetailViewContainer extends React.Component<Props, State> {
 
   render () {
     const { pictureDetails } = this.props.navigation.state.params
-    const image = pictureDetails.image_url[0]
+    const imageURL = pictureDetails.full_picture
     const { isLoading, hiResImage } = this.props
     return <DetailView
       imageUrl={imageURL}
