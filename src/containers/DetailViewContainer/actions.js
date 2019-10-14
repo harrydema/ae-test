@@ -1,33 +1,55 @@
 // @flow
 
-import { getPictureDetails } from '../../services/500pxAPI'
-import { FETCH_FAILED } from '../HomeContainer/actions'
-import type { ActionWithPayload, ActionWithoutPayload } from '../../types/actions'
+import { getPictureDetails } from "@rest/resources/PicturesResource";
+import {
+  PICTURE_DETAILS_FETCH_START,
+  PICTURE_DETAILS_FETCH_SUCCESS,
+  PICTURE_DETAILS_FETCH_FAILURE
+} from "./types";
+import type {
+  ActionWithPayload,
+  ActionWithoutPayload
+} from "../../types/actions";
 
-export const PICTURE_DETAILS_FETCH_REQUESTED = 'PICTURE_DETAILS_FETCH_REQUESTED'
-export const PICTURE_DETAILS_FETCH_SUCCESS = 'PICTURE_DETAILS_FETCH_SUCCESS'
-
-export function pictureIsLoading (): ActionWithoutPayload {
+export function pictureIsLoading(): ActionWithoutPayload {
   return {
-    type: PICTURE_DETAILS_FETCH_REQUESTED,
-  }
+    type: PICTURE_DETAILS_FETCH_START
+  };
 }
 
-export function fetchPictureSuccess (imageId: number, hiResImage: string): ActionWithPayload {
+export function fetchPictureSuccess(
+  imageId: number,
+  hiResImage: string
+): ActionWithPayload {
   return {
-    // TODO: implement me
-  }
+    type: PICTURE_DETAILS_FETCH_SUCCESS,
+    payload: {
+      imageId,
+      hiResImage
+    }
+  };
 }
 
-export function fetchPictureFailed (errorMessage: string): ActionWithPayload {
+export function fetchPictureFailed(errorMessage: string): ActionWithPayload {
   return {
-    // TODO: implement me
-
-  }
+    type: PICTURE_DETAILS_FETCH_FAILURE,
+    payload: {
+      errorMessage
+    }
+  };
 }
 
-export function fetchPictureDetails (imageId: number) {
+export function fetchPictureDetails(imageId: number) {
   return async dispatch => {
-    // TODO: implement me
-  }
+    try {
+      dispatch(pictureIsLoading());
+
+      const response = await getPictureDetails(imageId);
+
+      dispatch(fetchPictureSuccess(response.data.id, response.data));
+    } catch (e) {
+      console.error(e);
+      dispatch(fetchListFailed(e.message));
+    }
+  };
 }

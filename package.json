@@ -7,9 +7,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "axios": "^0.19.0",
+    "axios-token-interceptor": "^0.1.0",
     "node-fetch": "^2.0.0",
     "react": "^16.3.1",
     "react-native": "^0.55.3",
+    "react-native-image-pan-zoom": "^2.1.11",
     "react-navigation": "1.5.11",
     "react-redux": "5.0.7",
     "redux": "4.0.0",

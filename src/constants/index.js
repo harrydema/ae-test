@@ -1,0 +1,7 @@
+export default {
+  API_KEY: "23567b218376f79d9415",
+  API_PROTOCOL: "http",
+  API_DOMAIN: "195.39.233.28",
+  API_PORT: "8035",
+  TOKEN_STORAGE_KEY: "SESSION_TOKEN"
+};
