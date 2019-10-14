@@ -1,6 +1,8 @@
-#########
-RUN PROJECT
-#########
+#######################################
+
+## RUN PROJECT
+
+#######################################
 
 - Verify you have node installed on your machine.
 - Verify you have the React Native cli installed on your machine.
@@ -17,9 +19,11 @@ For android:
 For IOS:
 `react-native run-ios` Or directly from XCode
 
-##########
-BUGFIXING
-##########
+########################################
+
+## BUGFIXING
+
+########################################
 
 - Problem between react native 0.55 and XCode 11
 
