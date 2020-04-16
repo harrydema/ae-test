@@ -33,7 +33,6 @@ class DetailViewContainer extends React.Component<Props, State> {
   componentDidMount() {
     const { navigation, fetchPictureDetails } = this.props;
     const { pictureDetails } = navigation.state.params;
-    console.log(pictureDetails);
     if (!this.props.hiResImage(pictureDetails.id)) {
       fetchPictureDetails(pictureDetails.id);
     }
@@ -96,7 +95,7 @@ class DetailViewContainer extends React.Component<Props, State> {
   }
 }
 
-function bindAction(dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     fetchPictureDetails: imageId => dispatch(fetchPictureDetails(imageId))
   };
@@ -109,5 +108,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  bindAction
+  mapDispatchToProps
 )(DetailViewContainer);

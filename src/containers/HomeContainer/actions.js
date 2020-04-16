@@ -41,8 +41,6 @@ export function fetchPictures(page: number = 1) {
 
       const response = await getPictures(page);
 
-      console.log("aaa");
-
       dispatch(fetchListSuccess(response.data.pictures, page));
     } catch (e) {
       console.error(e);

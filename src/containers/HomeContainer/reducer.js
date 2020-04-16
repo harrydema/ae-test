@@ -16,22 +16,25 @@ export default function(state: any = initialState, action: Object) {
   const payload = action.payload;
   switch (action.type) {
     case PICTURES_FETCH_START:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isLoading: true
-      });
+      };
 
     case PICTURES_FETCH_SUCCESS:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isLoading: false,
         pictures: [...state.pictures, ...payload.pictures],
         page: payload.page
-      });
+      };
 
     case PICTURES_FETCH_FAILURE:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isLoading: false,
         errorMessage: payload.errorMessage
-      });
+      };
 
     default:
       return state;

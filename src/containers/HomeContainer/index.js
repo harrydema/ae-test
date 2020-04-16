@@ -24,19 +24,17 @@ class HomeContainer extends React.Component<Props, State> {
     super(props);
     StatusBar.setBarStyle("light-content");
     Platform.OS === "android" && StatusBar.setBackgroundColor("#000");
-    this.onRefresh = this.onRefresh.bind(this);
-    this.onLoadNext = this.onLoadNext.bind(this);
   }
 
   componentDidMount() {
     this.onRefresh();
   }
 
-  onRefresh(): void {
+  onRefresh = () : void => {
     this.props.fetchPictures(1);
   }
 
-  onLoadNext(): void {
+  onLoadNext = (): void => {
     this.props.fetchPictures(this.props.page);
   }
 
@@ -51,7 +49,7 @@ class HomeContainer extends React.Component<Props, State> {
   }
 }
 
-function bindAction(dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     fetchPictures: page => dispatch(fetchPictures(page))
   };
@@ -65,5 +63,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  bindAction
+  mapDispatchToProps
 )(HomeContainer);
